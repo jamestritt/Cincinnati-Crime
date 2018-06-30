@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>A Pen by  jamestritt</title>
+  
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src='js/index.js'></script>
+    <link rel="stylesheet" href="css/style.css">
+  
+  
+</head>
+
+<body>
+
+  <html>
+<head>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+ 
+ 
+
+</head>
+<body>
+  <script id="neighborhood-template" type="text/x-handlebars-template">
+  <div>
+  	<h3>
+    <span>Total number of offenses:<span class="total-number"> {{count}}</span>
+    </h3>
+      	<h3>
+    Type of offenses:{{count}}
+    </h3>
+    <ul>
+    {{#each offenses}}
+    <li> {{@key}}: {{this}}</li>
+    {{/each}}
+    </ul>
+	</div>
+</script>
+
+
+<div class="ui-widget">
+  <label for="tags">Neighborhood: </label>
+  <input id="tags" placeholder="clifton">
+</div>
+  
+
+</body>
+  
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

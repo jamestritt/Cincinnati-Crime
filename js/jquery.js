@@ -1,4 +1,4 @@
-$(document).ready(function(){      
+      
 var endpoint = 'https://data.cincinnati-oh.gov/resource/ceds-in67.json';
 
 
@@ -82,11 +82,7 @@ $('#tags').on('keypress', function(event){
   }
 
 })
-}) 
 
-function myFunction() {
-    location.reload();
-}
 
 
 

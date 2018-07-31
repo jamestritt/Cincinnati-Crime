@@ -1,8 +1,131 @@
-   .total-number{
-  color: black;
-  
+.total-number{
+  color: red;
+}
+
+.jumbotron.text-center {
+    background-color: #b3c2bf;
+}
+
+#color{
+    background-color: #e9ece5;
+    border-radius: 15px;
+}
+
+#colorb{
+    background-color: #b3c2bf;
+    border-radius: 15px;
+    align-content: center;
 }
 
 body{
-  color: brown;
+   color: red;
+}
+
+h3{
+     text-align: center;
+}
+
+p{
+   text-align: center;
+  color: #3b3a36;
+}
+
+#button{
+    margin-left: 50px;
+    margin-top: 15px;
+    color: #3b3a36;
+    align-content: center;
+    background: white;
+    border-color: #3b3a36;
+}
+
+
+#submit{
+    margin-left: 50px;
+    margin-top: 15px;
+    color: #3b3a36;
+    align-content: center;
+    background: white;
+    border-color: #3b3a36;
+}
+
+
+#button:hover { 
+    background-color: #3b3a36;
+    text-decoration-color: red;
+    color: white;
+}
+
+#submit:hover { 
+    background-color: #3b3a36;
+    text-decoration-color: red;
+    color: white;
+}
+
+.title{
+    text-transform: uppercase;
+}
+
+.crime{
+    text-transform: uppercase;
+}
+
+.text{
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 50px;
+}
+
+.card {
+    border: none !important;
+}
+
+.list {
+   text-align: center;
+  list-style-type:none;
+    font-size: 1.2em;
+}
+
+
+
+.row{
+    margin-top: px;
+    padding: 25px;
+}
+
+.card-deck{
+    width: 100%;
+    margin: auto;
+}
+
+
+.col-sm-3{
+  text-align: center;
+    padding-left: 50px;
+}
+
+input{
+  width: 350px;
+}
+
+.ui-widget{
+    background-color: white;
+}
+
+.ui-item-menu{
+
+}
+
+
+#ui-id-1{
+    list-style-type:none;
+    color: #3b3a36;
+    background-color: #e9ece5;
+    width: 350px;
+}
+
+
+.ui-helper-hidden-accessible{
+    margin-left:0;
+            visibility: hidden;
 }

@@ -3,85 +3,83 @@ var endpoint = 'https://data.cincinnati-oh.gov/resource/ceds-in67.json';
 
 
 
-var neighborhoods = {};
+var location = {};
 
 
 
 $.get( endpoint, function(data){
 	data.forEach(function(item){
-  var neighborhood = item.cpd_neighborhood;
-  var age = item.victim_age;
+    var neighborhood = item.cpd_neighborhood;
   
-  if(!neighborhoods[neighborhood]){
-    	neighborhoods[neighborhood]= {};
-      neighborhoods[neighborhood].count = 1;
-      neighborhoods[neighborhood].offenses = {};
-      neighborhoods[neighborhood].victim_age = {};
-    neighborhoods[neighborhood].dayofweek = {};
-    neighborhoods[neighborhood].victim_gender= {};
-    
-  }else{
-  	neighborhoods[neighborhood].count ++;
-  }
-  
+    if(!location[neighborhood]){
+        location[neighborhood]= {};
+        location[neighborhood].count = 1;
+        location[neighborhood].type = {};
+        location[neighborhood].age = {};
+        location[neighborhood].day = {};
+        location[neighborhood].gender= {};
 
-  
-  if(!neighborhoods[neighborhood].offenses[item.offense]){ 
-  	neighborhoods[neighborhood].offenses[item.offense] = 1;
-    
     }else{
-  	neighborhoods[neighborhood].offenses[item.offense] ++;
-  }
-  
-  
-  if(!neighborhoods[neighborhood].victim_age[item.victim_age]){ 
-  	neighborhoods[neighborhood].victim_age[item.victim_age] = 1;
-    
+        location[neighborhood].count ++;
+    }
+
+
+
+    if(!location[neighborhood].type[item.offense]){ 
+        location[neighborhood].type[item.offense] = 1;
+
     }else{
-  	neighborhoods[neighborhood].victim_age[item.victim_age] ++;
-  }
-  
-  
-    if(!neighborhoods[neighborhood].dayofweek[item.dayofweek]){ 
-  	neighborhoods[neighborhood].dayofweek[item.dayofweek] = 1;
-    
+        location[neighborhood].type[item.offense] ++;
+    }
+
+
+    if(!location[neighborhood].age[item.victim_age]){ 
+        location[neighborhood].age[item.victim_age] = 1;
+
     }else{
-  	neighborhoods[neighborhood].dayofweek[item.dayofweek] ++;
-  }
-  
-  
-     if(!neighborhoods[neighborhood].victim_gender[item.victim_gender]){ 
-  	neighborhoods[neighborhood].victim_gender[item.victim_gender] = 1;
-    
+        location[neighborhood].age[item.victim_age] ++;
+    }
+
+
+    if(!location[neighborhood].day[item.dayofweek]){ 
+        location[neighborhood].day[item.dayofweek] = 1;
+
     }else{
-  	neighborhoods[neighborhood].victim_gender[item.victim_gender] ++;
-  }
+        location[neighborhood].day[item.dayofweek] ++;
+    }
+
+
+    if(!location[neighborhood].gender[item.victim_gender]){ 
+        location[neighborhood].gender[item.victim_gender] = 1;
+
+    }else{
+        location[neighborhood].gender[item.victim_gender] ++;
+    }
   
   })
   
   
-  $('#tags').autocomplete({
-  	source: Object.keys(neighborhoods)
-  });
+    $('#tags').autocomplete({
+        source: Object.keys(location)
+    });
    
-  
 });
 
 
 
-var source   = document.getElementById("neighborhood-template").innerHTML;
-var template = Handlebars.compile(source);
+    var source   = document.getElementById("neighborhood-template").innerHTML;
+    var template = Handlebars.compile(source);
 
 
-$('#tags').on('keypress', function(event){
-	if(event.which === 13){
-  	var selection = $('#tags').val();
-    var selected = neighborhoods[selection.toUpperCase()];
-    
-  $('body').append(template(selected));
-  }
+    $('#tags').on('keypress', function(event){
+        if(event.which === 13){
+        var selection = $('#tags').val();
+        var selected = location[selection.toUpperCase()];
 
-})
+      $('body').append(template(selected));
+      }
+
+    })
 }) 
 
 function myFunction() {

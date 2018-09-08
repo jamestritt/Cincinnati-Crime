@@ -6,12 +6,12 @@
     background-color: #b3c2bf;
 }
 
-#color{
+#colortan{
     background-color: #e9ece5;
     border-radius: 15px;
 }
 
-#colorb{
+#colorgreen{
     background-color: #b3c2bf;
     border-radius: 15px;
     align-content: center;
@@ -30,7 +30,7 @@ p{
   color: #3b3a36;
 }
 
-#button{
+#refresh{
     margin-left: 50px;
     margin-top: 15px;
     color: #3b3a36;
@@ -39,6 +39,11 @@ p{
     border-color: #3b3a36;
 }
 
+#refresh:hover { 
+    background-color: #3b3a36;
+    text-decoration-color: red;
+    color: white;
+}
 
 #submit{
     margin-left: 50px;
@@ -47,13 +52,6 @@ p{
     align-content: center;
     background: white;
     border-color: #3b3a36;
-}
-
-
-#button:hover { 
-    background-color: #3b3a36;
-    text-decoration-color: red;
-    color: white;
 }
 
 #submit:hover { 
@@ -81,15 +79,14 @@ p{
 }
 
 .list {
-   text-align: center;
-  list-style-type:none;
-    font-size: 1.2em;
+    list-style-type:none;
+    font-size: 1.05em;
+    margin-right: 10%;
+    text-align: center;
 }
 
-
-
 .row{
-    margin-top: px;
+    margin-top: 10px;
     padding: 25px;
 }
 
@@ -112,11 +109,6 @@ input{
     background-color: white;
 }
 
-.ui-item-menu{
-
-}
-
-
 #ui-id-1{
     list-style-type:none;
     color: #3b3a36;
@@ -124,8 +116,12 @@ input{
     width: 350px;
 }
 
-
 .ui-helper-hidden-accessible{
     margin-left:0;
-            visibility: hidden;
+    visibility: hidden;
+    position: fixed;
+}
+
+#results{
+    margin-left: 25px;
 }

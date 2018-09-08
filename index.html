@@ -5,135 +5,115 @@
     
     
   <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script> --> 
-
     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/handlebars-v4.0.11.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    
-    
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
 
 </head>
 <body>
   
-
 <div class="ui-widget">
-
-                                        
-   <script id="neighborhood-template" type="text/x-handlebars-template">
-
-                                                                       
-<div class="row">  
-    
-    <div class="card-deck">
-      <div class="card" class="col-sm-3">
-    <div class="card-body" id="color">
-        <ul class="list">
-            {{#each offenses}}
-                <li> {{@key}}: {{this}}</li>
-            {{/each}}
-        </ul>
-    </div>
-  </div>
-        
-    <div class="card" class="col-sm-3">
-    <div class="card-body" id="colorb">
-         <ul class="list">
-            {{#each dayofweek}}
-                <li> {{@key}}: {{this}}</li>
-            {{/each}}
-        </ul>
-    </div>
-  </div>
-        
-<div class="card" class="col-sm-3">
-    <div class="card-body" id="color">
-        <ul class="list">
-            {{#each victim_age}}
-                <li> {{@key}}: {{this}}</li>
-            {{/each}}
-        </ul>
-    </div>
-  </div>
-        
-  <div class="card" class="col-sm-3">
-    <div class="card-body" id="colorb">
-        <ul class="list">
-            {{#each victim_gender}}
-                <li> {{@key}}:{{this}}</li>
-            {{/each}}
-        </ul>
-
-    </div>
-  </div>
-</div>
-</div>  
-      
-      
+    <script id="neighborhood-template" type="text/x-handlebars-template">                                                         
+        <div class="resultsrow" id="results">   
+            <div class="card-deck">
+                
+                <div class="card" class="col-sm-3">
+                    <div class="card-body" id="colortan">
+                        <ul class="list">
+                            {{#each type}}
+                                <li> {{@key}}: {{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card" class="col-sm-3">
+                    <div class="card-body" id="colorgreen">
+                         <ul class="list">
+                            {{#each day}}
+                                <li> {{@key}}: {{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card" class="col-sm-3">
+                    <div class="card-body" id="colortan">
+                        <ul class="list">
+                            {{#each age}}
+                                <li> {{@key}}: {{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                  </div>
+                
+                  <div class="card" class="col-sm-3">
+                    <div class="card-body" id="colorgreen">
+                        <ul class="list">
+                            {{#each gender}}
+                                <li> {{@key}}:{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                  </div>
+            </div>
+        </div>  
 </script>                                     
                                         
                                         
 <div class="jumbotron text-center">
-  <h1>Cincinnati Crime Search</h1>
-    <p class="subheader">Us the search bar to check out the crime around cincinnati</p> 
-    <label for="tags">Enter in a neighborhood: </label>
-    <div>
-  <input id="tags" placeholder=""> 
+    <h1>Cincinnati Crime Search</h1>
+        <p class="subheader">Use the search bar to check out the crime around cincinnati</p> 
+            <label for="neighborhood">Enter in a neighborhood: </label>
+                <div>
+                    <input id="input" placeholder="Please enter in a neighborhood"> 
+                </div>
+    <div id="myForm">
+        <button type="button" class="btn btn-outline-primary" id="submit">Submit</button>
+        <button type="button" class="btn btn-outline-primary" id="refresh">Refresh</button>
     </div>
-
-<div id="myForm">
-    <button type="button" class="btn btn-outline-primary" id="submit" onclick="getQuote()">Submit</button>
-    <button type="button" class="btn btn-outline-primary" id="button" onclick="myFunction()">Refresh</button>
 </div>
-</div>
-  
     
-    <div class="row">  
-    
+<div class="row">  
   <div class="col-sm-3">
-    <div class="">
+    <div>
         <h2 class="title">Number of Offense</h2>
             <p class="card-text">This show the total number of offenses and the count for each type of offenses</p>
-
     </div>
-  </div>
-        
+  </div>   
+    
   <div class="col-sm-3">
-    <div class="">
+    <div>
         <h2 class="title">Day of Offense</h2>
             <p class="card-text">Shows which day of the week and the offense occur that occur</p>
-
     </div>
   </div>
-        
+   
   <div class="col-sm-3">
-    <div class="">
+    <div>
         <h2 class="title">Age of Victim</h2>
             <p class="card-text">This shows an age range of the victim and how many their age group</p>
-
     </div>
   </div>
         
   <div class="col-sm-3">
-    <div class="">
+    <div>
         <h2 class="title">Gender of Victim</h2>
             <p class="card-text">A break down of the number of times victim is a male or female</p>
-
     </div>
   </div>
         
 </div>    
 
 </div>
-    </body>
+</body>
 </html>
     
  

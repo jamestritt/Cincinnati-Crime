@@ -1,15 +1,25 @@
 $(document).ready(function(){      
 var endpoint = 'https://data.cincinnati-oh.gov/resource/ceds-in67.json';
-
-
-
-var location = {};
+// clean up html class and id names and indentations --- done
+//add error state/alert .get(error) or any kind of error, no crime
+// style of column placement, mobile, etc.
+// array sort
+    
+var location = {
+    
+//    west_end: {
+//        type: {
+//            assult : 20
+//            speeding : 20
+//        }
+//    }
+}
 
 
 
 $.get( endpoint, function(data){
-	data.forEach(function(item){
-    var neighborhood = item.cpd_neighborhood;
+	data.forEach(function(report){
+    var neighborhood = report.cpd_neighborhood;
   
     if(!location[neighborhood]){
         location[neighborhood]= {};
@@ -25,71 +35,76 @@ $.get( endpoint, function(data){
 
 
 
-    if(!location[neighborhood].type[item.offense]){ 
-        location[neighborhood].type[item.offense] = 1;
+    if(!location[neighborhood].type[report.offense]){ 
+        location[neighborhood].type[report.offense] = 1;
 
-    }else{
-        location[neighborhood].type[item.offense] ++;
+    }else{         //type = obj key = item.offense   ++ = value
+        location[neighborhood].type[report.offense] ++;
     }
 
 
-    if(!location[neighborhood].age[item.victim_age]){ 
-        location[neighborhood].age[item.victim_age] = 1;
+    if(!location[neighborhood].age[report.victim_age]){ 
+        location[neighborhood].age[report.victim_age] = 1;
 
     }else{
-        location[neighborhood].age[item.victim_age] ++;
+        location[neighborhood].age[report.victim_age] ++;
     }
 
 
-    if(!location[neighborhood].day[item.dayofweek]){ 
-        location[neighborhood].day[item.dayofweek] = 1;
+    if(!location[neighborhood].day[report.dayofweek]){ 
+        location[neighborhood].day[report.dayofweek] = 1;
 
     }else{
-        location[neighborhood].day[item.dayofweek] ++;
+        location[neighborhood].day[report.dayofweek] ++;
     }
 
 
-    if(!location[neighborhood].gender[item.victim_gender]){ 
-        location[neighborhood].gender[item.victim_gender] = 1;
+    if(!location[neighborhood].gender[report.victim_gender]){ 
+        location[neighborhood].gender[report.victim_gender] = 1;
 
     }else{
-        location[neighborhood].gender[item.victim_gender] ++;
+        location[neighborhood].gender[report.victim_gender] ++;
     }
   
   })
   
-  
-    $('#tags').autocomplete({
+    console.log(location);
+    
+    
+    $('#input').autocomplete({
         source: Object.keys(location)
     });
+    
+
    
 });
 
-
-
+var loadResluts = function(){
     var source   = document.getElementById("neighborhood-template").innerHTML;
     var template = Handlebars.compile(source);
-
-
-    $('#tags').on('keypress', function(event){
-        if(event.which === 13){
-        var selection = $('#tags').val();
+    var selection = $('#input').val();
         var selected = location[selection.toUpperCase()];
+            $('#results').remove();
+            $('.ui-widget').append(template(selected)); 
+} 
 
-      $('body').append(template(selected));
+    $('#input').on('keypress', function(event){
+        if(event.which === 13){
+        loadResluts();
       }
-
     })
+    
+    $('#submit').click(function(){
+        loadResluts();
+    });
+    
+    $('#refresh').click(function(){
+        $('#results').remove();
+        $('#input').val("");
+    });
+ 
+    
 }) 
-
-function myFunction() {
-    location.reload();
-}
-
-
-
-
-
   
 
 

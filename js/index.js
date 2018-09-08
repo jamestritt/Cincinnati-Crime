@@ -1,9 +1,5 @@
 $(document).ready(function(){      
 var endpoint = 'https://data.cincinnati-oh.gov/resource/ceds-in67.json';
-// clean up html class and id names and indentations --- done
-//add error state/alert .get(error) or any kind of error, no crime
-// style of column placement, mobile, etc.
-// array sort
     
 var location = {
     

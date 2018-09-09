@@ -1,5 +1,6 @@
 $(document).ready(function(){      
 var endpoint = 'https://data.cincinnati-oh.gov/resource/ceds-in67.json';
+// array sort
     
 var location = {
     
@@ -13,7 +14,7 @@ var location = {
 
 
 
-$.get( endpoint, function(data){
+$.get(endpoint, function(data){
 	data.forEach(function(report){
     var neighborhood = report.cpd_neighborhood;
   
@@ -34,7 +35,7 @@ $.get( endpoint, function(data){
     if(!location[neighborhood].type[report.offense]){ 
         location[neighborhood].type[report.offense] = 1;
 
-    }else{         //type = obj key = item.offense   ++ = value
+    }else{         //type = obj key = report.offense   ++ = value
         location[neighborhood].type[report.offense] ++;
     }
 
@@ -64,19 +65,25 @@ $.get( endpoint, function(data){
   
   })
   
-    console.log(location);
+    
     
     
     $('#input').autocomplete({
         source: Object.keys(location)
     });
     
-
-   
+//   $('li').sort(function(age1, age2){
+//        age1.victim_age - age2.victim_age;
+//}); 
+//    
+    console.log(location.victim_age);
 });
-
+   
+    
+    console.log(location);
+    
 var loadResluts = function(){
-    var source   = document.getElementById("neighborhood-template").innerHTML;
+    var source = document.getElementById("neighborhood-template").innerHTML;
     var template = Handlebars.compile(source);
     var selection = $('#input').val();
         var selected = location[selection.toUpperCase()];
@@ -98,9 +105,14 @@ var loadResluts = function(){
         $('#results').remove();
         $('#input').val("");
     });
- 
     
-}) 
+    $(document).ready(function(){
+        $(document).ajaxError(function(){
+            alert("Sorry for the inconvenience, we are making updates. Please come back soon!");
+        });
+    });
+
+}); 
   
 
 

@@ -1,17 +1,14 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Cincinnati Crime Search</title>
-    
-    
+  <title>Cincinnati Crime Search</title>  
   <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/handlebars-v4.0.11.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 
@@ -76,8 +73,11 @@
                     <input id="input" placeholder="Please enter in a neighborhood"> 
                 </div>
     <div id="myForm">
+        <div class="container-fluid">
         <button type="button" class="btn btn-outline-primary" id="submit">Submit</button>
         <button type="button" class="btn btn-outline-primary" id="refresh">Refresh</button>
+        <p id="errormessage"></p>
+        </div>
     </div>
 </div>
     

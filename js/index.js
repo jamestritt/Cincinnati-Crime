@@ -1,22 +1,14 @@
-$(document).ready(function(){      
+$(document).ready(function(){  
+	
 var endpoint = 'https://data.cincinnati-oh.gov/resource/ceds-in67.json';
-// array sort
     
-var location = {
-    
-//    west_end: {
-//        type: {
-//            assult : 20
-//            speeding : 20
-//        }
-//    }
-}
+var location = {}
 
 
 
 $.get(endpoint, function(data){
 	data.forEach(function(report){
-    var neighborhood = report.cpd_neighborhood;
+    	var neighborhood = report.cpd_neighborhood;
   
     if(!location[neighborhood]){
         location[neighborhood]= {};
@@ -71,12 +63,8 @@ $.get(endpoint, function(data){
     $('#input').autocomplete({
         source: Object.keys(location)
     });
-    
-//   $('li').sort(function(age1, age2){
-//        age1.victim_age - age2.victim_age;
-//}); 
-//    
-    console.log(location.victim_age);
+      
+    //console.log(location);
 });
    
     

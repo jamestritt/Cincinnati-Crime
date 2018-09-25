@@ -22,7 +22,7 @@ $.get(endpoint, function(data){
             if (!location[neighborhood].type[report.offense]){ 
                     location[neighborhood].type[report.offense] = 1;
 
-            } else {         //type = obj key = report.offense   ++ = value
+            } else {
                 location[neighborhood].type[report.offense] ++;
             }
 

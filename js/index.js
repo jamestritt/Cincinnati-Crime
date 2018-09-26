@@ -1,7 +1,7 @@
 $(document).ready(function (){      
 var endpoint = 'https://data.cincinnati-oh.gov/resource/ceds-in67.json';
     
-var location = {}
+var location = {};
   
 $.get(endpoint, function(data){
     data.forEach(function(report){
